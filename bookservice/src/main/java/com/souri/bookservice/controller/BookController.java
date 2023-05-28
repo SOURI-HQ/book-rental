@@ -44,7 +44,7 @@ public class BookController {
         return ResponseEntity.ok(bookService.updateBook(id, book));
     }
 
-    @PutMapping("/book/available/{id}/")
+    @PutMapping("/book/available/{id}")
     public ResponseEntity<Book> makeBookAvailable(@PathVariable Integer id) {
         return ResponseEntity.ok(bookService.makeAvailable(id));
     }

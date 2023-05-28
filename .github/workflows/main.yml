@@ -27,13 +27,10 @@ jobs:
       - name: Build with Maven
         run: mvn -f "bookservice/pom.xml" clean package -Dmaven.test.skip=true
         
-      - name: Build the Docker image
+      - name: Build the Docker images
         run: docker-compose -f "bookservice/docker-compose.yml" build --no-cache --force-rm 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Test the Docker image
+        
+      - name: Test the Docker images
         run: docker-compose -f "bookservice/docker-compose.yml" up -d
   push_to_registry:
     name: Push Docker image to Docker Hub

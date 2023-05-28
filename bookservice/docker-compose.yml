@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  api_service:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - maria_db
+    environment:
+      BOOKRENTAL_DB_HOST: jdbc:mysql://maria_db
+      BOOKRENTAL_DB_PORT: 3306
+      BOOKRENTAL_DB_NAME: book-rental
+  maria_db:
+    image: "mariadb:10.4.22"
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: book-rental
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_PASSWORD:
+      MYSQL_ROOT_PASSWORD:

@@ -1,8 +1,9 @@
 spring:
     datasource:
         url: ${BOOKRENTAL_DB_HOST}:${BOOKRENTAL_DB_PORT}/${BOOKRENTAL_DB_NAME}
-        username: ${BOOKRENTAL_DB_USERNAME}
+        #url: jdbc:mysql://maria_db:3306/book-rental
+        username: root
         password:
     jpa:
         hibernate:
-            ddl-auto: update
+            ddl-auto: create

@@ -2,7 +2,7 @@ package com.souri.bookservice.service;
 
 import com.souri.bookservice.exception.BookNotFoundException;
 import com.souri.bookservice.exception.UnprocessableEntityException;
-import com.souri.bookservice.model.Book;
+import com.souri.bookservice.domain.Book;
 import com.souri.bookservice.repository.BookRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.souri.bookservice.model;
+package com.souri.bookservice.domain;
 
 public enum Genre {
     FANTASY, SCIENCE_FICTION, DYSTOPIAN, MYSTERY, HORROR, THRILLER, ACTION, ROMANCE, FICTION, BIOGRAPHY, HISTORY

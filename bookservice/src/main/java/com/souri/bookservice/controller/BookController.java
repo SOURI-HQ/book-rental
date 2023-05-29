@@ -1,6 +1,6 @@
 package com.souri.bookservice.controller;
 
-import com.souri.bookservice.model.Book;
+import com.souri.bookservice.domain.Book;
 import com.souri.bookservice.service.BookService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

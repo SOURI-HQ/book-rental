@@ -1,4 +1,4 @@
-package com.souri.bookservice.model;
+package com.souri.bookservice.domain;
 
 import jakarta.persistence.*;
 

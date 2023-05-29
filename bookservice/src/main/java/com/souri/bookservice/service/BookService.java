@@ -1,5 +1,7 @@
 package com.souri.bookservice.service;
 
+import com.souri.bookservice.exception.BookNotFoundException;
+import com.souri.bookservice.exception.UnprocessableEntityException;
 import com.souri.bookservice.model.Book;
 import com.souri.bookservice.repository.BookRepository;
 import org.springframework.stereotype.Service;
@@ -20,41 +22,47 @@ public class BookService {
     }
 
     public Book getBook(Integer id) {
-        return bookRepository.findById(id).orElse(null);
+        return bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
     }
 
     public Book addBook(Book book) {
+        if (book.getId() != null) {
+            throw new UnprocessableEntityException("Given entity cannot be processed: illegal name-value pair given [id]");
+        }
         return bookRepository.save(book);
     }
 
     public Book updateBook(Integer id, Book book) {
         if (bookRepository.existsById(id)) {
             book.setId(id);
-            bookRepository.save(book);
         }
-        return null;
+        else {
+            throw new BookNotFoundException();
+        }
+
+        return bookRepository.save(book);
     }
 
     public void deleteBook(Integer id) {
         if (bookRepository.existsById(id)) {
             bookRepository.deleteById(id);
         }
+        else {
+            throw new BookNotFoundException();
+        }
     }
 
     public Book makeAvailable(Integer id) {
-        Book book = bookRepository.findById(id).orElse(null);
-        if (book != null) {
-            book.makeAvailable();
-        }
+        Book book = bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
+        book.makeAvailable();
+
         return bookRepository.save(book);
     }
 
     public Book makeUnavailable(Integer id) {
-        Book book = bookRepository.findById(id).orElse(null);
-        if (book != null) {
-            book.makeUnavailable();
-        }
+        Book book = bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
+        book.makeUnavailable();
+
         return bookRepository.save(book);
     }
-
 }

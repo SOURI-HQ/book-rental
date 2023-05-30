@@ -54,6 +54,7 @@ public class BookService {
 
     public Book makeAvailable(Integer id) {
         Book book = bookRepository.findById(id).orElseThrow(BookNotFoundException::new);
+        //TODO: Check if book availability status is ok
         book.makeAvailable();
 
         return bookRepository.save(book);

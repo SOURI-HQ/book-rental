@@ -1,0 +1,5 @@
+package com.souri.bookrental.domain;
+
+public enum Genre {
+    FANTASY, SCIENCE_FICTION, DYSTOPIAN, MYSTERY, HORROR, THRILLER, ACTION, ROMANCE, FICTION, BIOGRAPHY, HISTORY
+}

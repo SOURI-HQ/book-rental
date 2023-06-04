@@ -1,7 +1,9 @@
 version: "3.7"
 services:
-  api_service:
+  bookservice:
     build: .
+    image: sourihq/bookservice
+    container_name: bookservice
     restart: always
     ports:
       - "8080:8080"

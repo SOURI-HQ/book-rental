@@ -25,6 +25,8 @@ public class BookExceptionHandler {
         return buildErrorResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, errorMessage));
     }
 
+    // TODO: add method not allowed exception handler
+
     private ResponseEntity<Object> buildErrorResponseEntity(ApiError apiError) {
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }

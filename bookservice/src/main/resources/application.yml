@@ -1,7 +1,6 @@
 spring:
     datasource:
         url: ${BOOKRENTAL_DB_HOST}:${BOOKRENTAL_DB_PORT}/${BOOKRENTAL_DB_NAME}
-        #url: jdbc:mysql://maria_db:3306/book-rental
         username: root
         password:
     jpa:

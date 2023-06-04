@@ -24,16 +24,16 @@ public class RentalExceptionHandler {
         return buildErrorResponseEntity(new ApiError(HttpStatus.NOT_FOUND, errorMessage));
     }
 
-//    @ExceptionHandler(HttpClientErrorException.BadRequest.class)
-//    public ResponseEntity<Object> handleBadRequestException(HttpClientErrorException.BadRequest e) {
-//        String errorMessage = "BadRequest - rental";
-//        return buildErrorResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, e.getResponseBodyAsString()));
-//    }
+    @ExceptionHandler(HttpClientErrorException.BadRequest.class)
+    public ResponseEntity<Object> handleBadRequestException(HttpClientErrorException.BadRequest e) {
+        String errorMessage = "BadRequest - rental";
+        return buildErrorResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, e.getLocalizedMessage()));
+    }
 
     @ExceptionHandler(ConnectException.class)
     public ResponseEntity<Object> handleConnectException(ConnectException e) {
         String errorMessage = "ConnectException - rental";
-        return buildErrorResponseEntity(new ApiError(HttpStatus.GATEWAY_TIMEOUT, errorMessage));
+        return buildErrorResponseEntity(new ApiError(HttpStatus.GATEWAY_TIMEOUT, e.getLocalizedMessage()));
     }
 
     ResponseEntity<Object> buildErrorResponseEntity(ApiError apiError) {

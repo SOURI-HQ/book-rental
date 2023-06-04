@@ -16,22 +16,22 @@ public class RentalService {
     }
 
     public Book getBook(Integer id) {
-        String url = "http://localhost:8080/bookservice/book/" + id;
+        String url = "http://bookservice:8080/bookservice/book/" + id;
         ResponseEntity<Book> responseBook = restTemplate.exchange(url, HttpMethod.GET, null, Book.class);
 
         return responseBook.getBody();
     }
 
     public Book borrowBook(Integer id) {
-        String url = "http://localhost:8080/bookservice/book/unavailable/" + id;
-        ResponseEntity<Book> responseBook = restTemplate.exchange(url, HttpMethod.GET, null, Book.class);
+        String url = "http://bookservice:8080/bookservice/book/unavailable/" + id;
+        ResponseEntity<Book> responseBook = restTemplate.exchange(url, HttpMethod.PUT, null, Book.class);
 
         return responseBook.getBody();
     }
 
     public Book returnBook(Integer id) {
-        String url = "http://localhost:8080/bookservice/book/available/" + id;
-        ResponseEntity<Book> responseBook = restTemplate.exchange(url, HttpMethod.GET, null, Book.class);
+        String url = "http://bookservice:8080/bookservice/book/available/" + id;
+        ResponseEntity<Book> responseBook = restTemplate.exchange(url, HttpMethod.PUT, null, Book.class);
 
         return responseBook.getBody();
     }

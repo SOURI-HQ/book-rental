@@ -12,27 +12,27 @@ import java.net.ConnectException;
 @RestControllerAdvice
 public class RentalExceptionHandler {
 
-    @ExceptionHandler(HttpClientErrorException.NotFound.class)
-    public ResponseEntity<Object> handleNotFoundException(HttpClientErrorException.NotFound e) {
-        String errorMessage = "Given entity cannot be processed: JSON parse error";
-        return buildErrorResponseEntity(new ApiError(HttpStatus.NOT_FOUND, errorMessage));
-    }
-
-    @ExceptionHandler(HttpClientErrorException.BadRequest.class)
-    public ResponseEntity<Object> handleBadRequestException(HttpClientErrorException.BadRequest e) {
-        String errorMessage = "Given entity cannot be processed: JSON parse error";
-        return buildErrorResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, errorMessage));
-    }
-
     @ExceptionHandler(HttpServerErrorException.InternalServerError.class)
     public ResponseEntity<Object> handleInternalServerErrorException(HttpServerErrorException.InternalServerError e) {
-        String errorMessage = "Given entity cannot be processed: JSON parse error";
+        String errorMessage = "Bookservice: Internal Server Error";
         return buildErrorResponseEntity(new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, errorMessage));
     }
 
+    @ExceptionHandler(HttpClientErrorException.NotFound.class)
+    public ResponseEntity<Object> handleNotFoundException(HttpClientErrorException.NotFound e) {
+        String errorMessage = "Requested endpoint or item does not exist";
+        return buildErrorResponseEntity(new ApiError(HttpStatus.NOT_FOUND, errorMessage));
+    }
+
+//    @ExceptionHandler(HttpClientErrorException.BadRequest.class)
+//    public ResponseEntity<Object> handleBadRequestException(HttpClientErrorException.BadRequest e) {
+//        String errorMessage = "BadRequest - rental";
+//        return buildErrorResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, e.getResponseBodyAsString()));
+//    }
+
     @ExceptionHandler(ConnectException.class)
     public ResponseEntity<Object> handleConnectException(ConnectException e) {
-        String errorMessage = "Given entity cannot be processed: JSON parse error";
+        String errorMessage = "ConnectException - rental";
         return buildErrorResponseEntity(new ApiError(HttpStatus.GATEWAY_TIMEOUT, errorMessage));
     }
 

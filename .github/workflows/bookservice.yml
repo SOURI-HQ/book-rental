@@ -7,7 +7,7 @@ on:
     
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: sourihq/book-rental
+  IMAGE_NAME: sourihq/bookservice
   
 jobs:
   build_test:
